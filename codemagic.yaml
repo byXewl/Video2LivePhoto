@@ -9,11 +9,11 @@ workflows:
           # 如果用 CocoaPods
           [ -f Podfile ] && pod install --repo-update
           # 拉取 SPM 依赖
-          xcodebuild -resolvePackageDependencies -workspace Video2LivePhoto.xcworkspace -scheme Video2LivePhoto
+          xcodebuild -resolvePackageDependencies -project Video2LivePhoto.xcodeproj -scheme Video2LivePhoto
       - name: Build .app (Release, 无签名)
         script: |
           xcodebuild archive \
-                -workspace Video2LivePhoto.xcworkspace \
+                -project Video2LivePhoto.xcodeproj \
                 -scheme Video2LivePhoto \
                 -configuration Release \
                 -archivePath "$PWD/build/Video2LivePhoto.xcarchive" \
